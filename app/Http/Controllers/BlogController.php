@@ -14,14 +14,21 @@ class BlogController extends Controller
 
         // Base de la URL con el embed activo
         $url = config('services.wordpress.url', env('WORDPRESS_API_URL')) . '/posts?_embed';
-
-        // Si hay un ID de categoría, se lo concatenamos usando el parámetro nativo de WP '&categories='
-        if ($categoryId) {
-            $url .= '&categories=' . $categoryId;
+        try {
+            // Ponemos un tiempo de espera máximo de 3 segundos para no congelar Laravel
+            $response = Http::timeout(3)->get($url);
+            $posts = $response->successful() ? $response->json() : [];
+            // Si hay un ID de categoría, se lo concatenamos usando el parámetro nativo de WP '&categories='
+            if ($categoryId) {
+                $url .= '&categories=' . $categoryId;
+            }
+        } catch (\Exception $e) {
+            // Si WordPress está apagado o el puerto cambió, evitamos el "Crash" y enviamos un array vacío
+            $posts = [];
+            // Opcional: Podrías registrar el error en los logs de Laravel para auditoría
+            // \Log::error("Error conectando a WordPress Headless: " . $e->getMessage());
         }
 
-        $response = Http::get($url);
-        $posts = $response->successful() ? $response->json() : [];
 
         return view('admin.blog.index', compact('posts'));
     }

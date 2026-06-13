@@ -324,8 +324,8 @@ return [
         ],
         [
             'text' => 'Entradas de WordPress',  // <-- Tu sección de integración Headless
-            'url' => 'blog',                    // <-- Apunta a la ruta de Laravel que consume la API
-            'icon' => 'fab fa-fw fa-wordpress', // <-- Icono oficial de WordPress
+            'route' => 'admin.blog.index',                    
+            'icon' => 'fab fa-fw fa-wordpress', // <-- Icono oficial de WordPress 
         ],
         ['header' => 'Ajustes de Cuenta'],
         [
