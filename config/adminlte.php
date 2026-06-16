@@ -323,9 +323,20 @@ return [
             'icon' => 'fas fa-fw fa-tachometer-alt',
         ],
         [
-            'text' => 'Entradas de WordPress',  // <-- Tu sección de integración Headless
-            'route' => 'admin.blog.index',                    
-            'icon' => 'fab fa-fw fa-wordpress', // <-- Icono oficial de WordPress 
+            'text' => 'WordPress',
+            'icon' => 'fas fa-fw fa-share',
+            'submenu' => [
+                [
+                    'text' => 'Entradas',  // <-- Tu sección de integración Headless
+                    'route' => 'admin.blog.index',
+                    'icon' => 'fab fa-fw fa-wordpress', // <-- Icono oficial de WordPress 
+                ],
+                [
+                    'text' => 'Crear',  // <-- Tu sección de integración Headless
+                    'route' => 'admin.blog.create',
+                    'icon' => 'fab fa-fw fa-wordpress', // <-- Icono oficial de WordPress 
+                ],
+            ],
         ],
         ['header' => 'Ajustes de Cuenta'],
         [

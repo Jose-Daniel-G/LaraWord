@@ -16,5 +16,7 @@ Route::middleware([
 
     // Mapeamos la URL /blog al controlador que acabamos de crear
     Route::get('/blog', [BlogController::class, 'index'])->name('admin.blog.index');
-    Route::get('/blog/{id}', [BlogController::class, 'show'])->name('blog.show');
-});
+    Route::get('/blog/create', [BlogController::class, 'create'])->name('admin.blog.create');
+    Route::post('/blog', [BlogController::class, 'store'])->name('admin.blog.store');
+    Route::get('/blog/{id}', [BlogController::class, 'show'])->name('admin.blog.show');
+    });

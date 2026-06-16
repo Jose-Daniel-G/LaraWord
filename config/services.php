@@ -34,5 +34,10 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
+    'wordpress' => [
+        'url'      => env('WORDPRESS_API_URL'),
+        'user'     => env('WORDPRESS_API_USER'),
+        'password' => env('WORDPRESS_API_PASSWORD'),
+    ],
 
 ];

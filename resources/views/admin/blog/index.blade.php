@@ -78,7 +78,7 @@
                             </a>
 
                             {{-- Enlace dinámico para ver el artículo completo en Laravel --}}
-                            <a href="{{ route('blog.show', $post['id']) }}" class="btn btn-sm btn-primary shadow-sm">
+                            <a href="{{ route('admin.blog.show', $post['id']) }}" class="btn btn-sm btn-primary shadow-sm">
                                 Leer entrada completa <i class="fas fa-arrow-right ml-1"></i>
                             </a>
 
